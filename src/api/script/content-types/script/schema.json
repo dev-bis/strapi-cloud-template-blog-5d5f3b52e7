@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scripts",
+  "info": {
+    "singularName": "script",
+    "pluralName": "scripts",
+    "displayName": "Scripts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Websites": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "Scripts"
+    },
+    "Script": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

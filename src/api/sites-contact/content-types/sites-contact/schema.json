@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sites_contacts",
+  "info": {
+    "singularName": "sites-contact",
+    "pluralName": "sites-contacts",
+    "displayName": "Sites Contacts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Websites": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "Contacts"
+    },
+    "Heading": {
+      "type": "string",
+      "required": false
+    },
+    "Contacts": {
+      "type": "component",
+      "component": "shared.contacts",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

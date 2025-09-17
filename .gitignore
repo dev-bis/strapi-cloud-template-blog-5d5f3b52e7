@@ -85,6 +85,8 @@ public/uploads/*
 .tsbuildinfo
 .eslintcache
 
+.strapi
+
 ############################
 # Node.js
 ############################
@@ -100,6 +102,8 @@ node_modules
 ############################
 # Package managers
 ############################
+
+tsconfig.json
 
 .yarn/*
 !.yarn/cache

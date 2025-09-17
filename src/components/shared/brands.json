@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_brands",
+  "info": {
+    "displayName": "Brands",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "Brands": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Satbet0.in",
+      "enum": [
+        "Satbet0.in",
+        "Badshahcric.online",
+        "Exchmarket.net",
+        "Rajabets.world",
+        "Betfairsites.com",
+        "King567.world"
+      ]
+    }
+  },
+  "config": {}
+}

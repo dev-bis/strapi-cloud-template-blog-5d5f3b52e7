@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_contacts",
+  "info": {
+    "displayName": "Contacts",
+    "icon": "phone"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "text",
+      "required": true
+    },
+    "Hyperlink": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

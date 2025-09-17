@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "websites",
+  "info": {
+    "singularName": "website",
+    "pluralName": "websites",
+    "displayName": "Website"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Website": {
+      "type": "string",
+      "required": true
+    },
+    "pages_seos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pages-seo.pages-seo",
+      "mappedBy": "Websites"
+    },
+    "bis_banners": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bis-banner.bis-banner",
+      "mappedBy": "Websites"
+    },
+    "bis_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bis-ariclte.bis-ariclte",
+      "mappedBy": "Websites"
+    },
+    "Contacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sites-contact.sites-contact",
+      "mappedBy": "Websites"
+    },
+    "Scripts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::script.script",
+      "mappedBy": "Websites"
+    }
+  }
+}

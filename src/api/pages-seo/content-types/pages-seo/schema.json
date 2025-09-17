@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_seos",
+  "info": {
+    "singularName": "pages-seo",
+    "pluralName": "pages-seos",
+    "displayName": "Pages SEO"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Page": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[\"Home\"]",
+      "options": [
+        "Home:Home",
+        "Promotions:Promotions",
+        "About Us:About",
+        "Bonus:Bonus",
+        "Contact Us:Contact",
+        "FAQ:FAQ",
+        "How To Play:HowToPlay",
+        "Privacy Policy:PrivacyPolicy",
+        "Terms Conditions:TermsConditions",
+        "Sign Up:SignUp",
+        "Todays Top Winners:TodaysTopWinners",
+        "Customer Feedback:CustomerFeedback",
+        "Betting ID:BettingID"
+      ],
+      "required": true
+    },
+    "SEO": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false,
+      "required": true
+    },
+    "Websites": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "pages_seos"
+    }
+  }
+}

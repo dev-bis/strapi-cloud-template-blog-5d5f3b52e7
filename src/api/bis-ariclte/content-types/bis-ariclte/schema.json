@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bis_aricltes",
+  "info": {
+    "singularName": "bis-ariclte",
+    "pluralName": "bis-aricltes",
+    "displayName": "BIS Articles"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "Heading": {
+      "type": "text",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "",
+      "required": true
+    },
+    "Poster": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "PublishedOn": {
+      "type": "date",
+      "required": true
+    },
+    "SEO": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false,
+      "required": true
+    },
+    "Content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "required": true
+    },
+    "Websites": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "bis_articles"
+    },
+    "Authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "mappedBy": "bis_articles"
+    }
+  }
+}

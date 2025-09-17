@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bis_banners",
+  "info": {
+    "singularName": "bis-banner",
+    "pluralName": "bis-banners",
+    "displayName": "BIS Banners"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Desktop": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "Mobile": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "From": {
+      "type": "datetime",
+      "required": true,
+      "unique": false
+    },
+    "To": {
+      "type": "datetime",
+      "required": true
+    },
+    "Heading": {
+      "type": "string",
+      "required": true
+    },
+    "BannerStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Active",
+      "enum": [
+        "Active",
+        "Inactive"
+      ]
+    },
+    "Position": {
+      "type": "integer",
+      "required": true,
+      "unique": false
+    },
+    "RedirectTo": {
+      "type": "string"
+    },
+    "Websites": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "bis_banners"
+    }
+  }
+}
