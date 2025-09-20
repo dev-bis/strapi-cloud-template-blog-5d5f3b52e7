@@ -566,6 +566,8 @@ export interface ApiPagesSeoPagesSeo extends Struct.CollectionTypeSchema {
           'Todays Top Winners:TodaysTopWinners',
           'Customer Feedback:CustomerFeedback',
           'Betting ID:BettingID',
+          'Responsible gaming:Responsibelgaming',
+          'Disclaimer:Disclaimer',
         ]
       > &
       Schema.Attribute.DefaultTo<'["Home"]'>;

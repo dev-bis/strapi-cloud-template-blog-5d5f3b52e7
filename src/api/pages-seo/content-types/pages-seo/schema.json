@@ -28,7 +28,9 @@
         "Sign Up:SignUp",
         "Todays Top Winners:TodaysTopWinners",
         "Customer Feedback:CustomerFeedback",
-        "Betting ID:BettingID"
+        "Betting ID:BettingID",
+        "Responsible gaming:Responsibelgaming",
+        "Disclaimer:Disclaimer"
       ],
       "required": true
     },
