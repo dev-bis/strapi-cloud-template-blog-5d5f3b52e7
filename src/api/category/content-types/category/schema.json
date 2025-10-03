@@ -26,9 +26,9 @@
       "target": "api::bis-ariclte.bis-ariclte",
       "mappedBy": "Category"
     },
-    "Websites": {
+    "Website": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::website.website",
       "inversedBy": "categories"
     }
