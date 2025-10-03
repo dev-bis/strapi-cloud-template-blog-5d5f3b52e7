@@ -454,6 +454,7 @@ export interface ApiBisAriclteBisAriclte extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
+    Category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     Content: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<
@@ -525,6 +526,39 @@ export interface ApiBisBannerBisBanner extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Websites: Schema.Attribute.Relation<'manyToOne', 'api::website.website'>;
+  };
+}
+
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
+  info: {
+    displayName: 'Category';
+    pluralName: 'categories';
+    singularName: 'category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bis_articles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bis-ariclte.bis-ariclte'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1200,6 +1234,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::bis-ariclte.bis-ariclte': ApiBisAriclteBisAriclte;
       'api::bis-banner.bis-banner': ApiBisBannerBisBanner;
+      'api::category.category': ApiCategoryCategory;
       'api::pages-seo.pages-seo': ApiPagesSeoPagesSeo;
       'api::script.script': ApiScriptScript;
       'api::sites-contact.sites-contact': ApiSitesContactSitesContact;
