@@ -559,6 +559,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Websites: Schema.Attribute.Relation<'manyToMany', 'api::website.website'>;
   };
 }
 
@@ -694,6 +695,10 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     bis_banners: Schema.Attribute.Relation<
       'oneToMany',
       'api::bis-banner.bis-banner'
+    >;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
     >;
     Contacts: Schema.Attribute.Relation<
       'oneToMany',

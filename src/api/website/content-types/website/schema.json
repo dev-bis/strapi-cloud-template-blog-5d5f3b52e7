@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::script.script",
       "mappedBy": "Websites"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "Websites"
     }
   }
 }
