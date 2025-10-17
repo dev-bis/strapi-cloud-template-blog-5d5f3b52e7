@@ -454,7 +454,6 @@ export interface ApiBisAriclteBisAriclte extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
-    Category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     Content: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<
@@ -540,10 +539,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bis_articles: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::bis-ariclte.bis-ariclte'
-    >;
+    Category: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -553,13 +551,15 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    sites_categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::sites-category.sites-category'
+    >;
+    Slug: Schema.Attribute.UID<'Category'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Website: Schema.Attribute.Relation<'manyToOne', 'api::website.website'>;
   };
 }
 
@@ -646,6 +646,39 @@ export interface ApiScriptScript extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSitesCategorySitesCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sites_categories';
+  info: {
+    displayName: 'Sites Category';
+    pluralName: 'sites-categories';
+    singularName: 'sites-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sites-category.sites-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Website: Schema.Attribute.Relation<'manyToOne', 'api::website.website'>;
+  };
+}
+
 export interface ApiSitesContactSitesContact
   extends Struct.CollectionTypeSchema {
   collectionName: 'sites_contacts';
@@ -697,10 +730,6 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::bis-banner.bis-banner'
     >;
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    >;
     Contacts: Schema.Attribute.Relation<
       'oneToMany',
       'api::sites-contact.sites-contact'
@@ -720,6 +749,10 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     Scripts: Schema.Attribute.Relation<'oneToMany', 'api::script.script'>;
+    sites_categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sites-category.sites-category'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1243,6 +1276,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::pages-seo.pages-seo': ApiPagesSeoPagesSeo;
       'api::script.script': ApiScriptScript;
+      'api::sites-category.sites-category': ApiSitesCategorySitesCategory;
       'api::sites-contact.sites-contact': ApiSitesContactSitesContact;
       'api::website.website': ApiWebsiteWebsite;
       'plugin::content-releases.release': PluginContentReleasesRelease;

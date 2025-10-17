@@ -11,26 +11,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "Category": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "Slug": {
       "type": "uid",
-      "targetField": "Name",
+      "targetField": "Category",
       "required": true
     },
-    "bis_articles": {
+    "sites_categories": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::bis-ariclte.bis-ariclte",
-      "mappedBy": "Category"
-    },
-    "Website": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::website.website",
-      "inversedBy": "categories"
+      "relation": "manyToMany",
+      "target": "api::sites-category.sites-category",
+      "inversedBy": "Categories"
     }
   }
 }

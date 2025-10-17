@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sites_categories",
+  "info": {
+    "singularName": "sites-category",
+    "pluralName": "sites-categories",
+    "displayName": "Sites Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "sites_categories"
+    },
+    "Website": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "sites_categories"
+    }
+  }
+}
