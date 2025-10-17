@@ -454,6 +454,10 @@ export interface ApiBisAriclteBisAriclte extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
+    Categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
     Content: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<
@@ -531,7 +535,7 @@ export interface ApiBisBannerBisBanner extends Struct.CollectionTypeSchema {
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
-    displayName: 'Category';
+    displayName: 'Categories';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -539,6 +543,10 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    bis_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::bis-ariclte.bis-ariclte'
+    >;
     Category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
